@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const state = urlSearchParams.get("state");
 
   if (code && state) {
+    removeQueryStringParametersFromCurrentURL();
+
     console.log(code)
     console.log(state)
   } else {
@@ -23,3 +25,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 });
+
+function removeQueryStringParametersFromCurrentURL() {
+    const currentUrl = window.location.href;
+    const urlObj = new URL(currentUrl);
+
+    urlObj.search = '';
+
+    window.history.pushState({}, '', urlObj.toString());
+}
