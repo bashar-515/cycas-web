@@ -40,6 +40,11 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          VITE_AUTHORITY: ${{ variables.VITE_AUTHORITY }}
+          VITE_CLIENT_ID: ${{ variables.VITE_CLIENT_ID }}
+          VITE_POST_LOGOUT_REDIRECT_URI: ${{ variables.VITE_POST_LOGOUT_REDIRECT_URI }}
+          VITE_REDIRECT_URI: ${{ variables.VITE_REDIRECT_URI }}
       - name: Add CNAME
         run: echo "app.cycas.dev" > dist/CNAME
       - name: Setup Pages
@@ -48,7 +53,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload just build artificats
-          path: 'dist'
+          path: "dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
