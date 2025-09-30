@@ -39,7 +39,7 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Build
-        run: npm run stage
+        run: npm run build
       - name: Add CNAME
         run: echo "app.cycas.dev" > dist/CNAME
       - name: Setup Pages
