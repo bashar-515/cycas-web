@@ -1,6 +1,9 @@
 name: Deploy app to Cloudflare Pages
 
 on:
+  schedule:
+    - cron: "0 15 * * 1-5" # Mon-Fri @ 15:00 UTC (11:00 AM EDT, 10:00 AM EST)
+
   workflow_dispatch:
 
 jobs:
