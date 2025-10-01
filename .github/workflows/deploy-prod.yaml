@@ -7,11 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Cloudflare Pages deployment
-        run: |
+      - run: |
           curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$CLOUDFLARE_PROJECT_NAME/deployments" \
             -H "Content-Type: multipart/form-data" \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
